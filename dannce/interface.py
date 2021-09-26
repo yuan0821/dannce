@@ -683,14 +683,23 @@ def dannce_train(params: Dict):
     # Make the training directory if it does not exist.
     make_folder("dannce_train_dir", params)
 
-    params["loss"] = getattr(losses, params["loss"])
+    if "huber_loss" in params["loss"]:
+        params["loss"] = losses.huber_loss(params["huber-delta"])
+    else:
+        params["loss"] = getattr(losses, params["loss"])
+    
     params["net"] = getattr(nets, params["net"])
+
 
     # Default to 6 views but a smaller number of views can be specified in the
     # DANNCE config. If the legnth of the camera files list is smaller than
     # n_views, relevant lists will be duplicated in order to match n_views, if
     # possible.
     n_views = int(params["n_views"])
+
+    # Pass delta value into huber loss function
+    if params["huber-delta"] is not None:
+        losses.huber_loss(params["huber-delta"])
 
     # Convert all metric strings to objects
     metrics = nets.get_metrics(params)
