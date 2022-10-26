@@ -1,0 +1,46 @@
+A general rule is that you want the model you're finetuning to have been trained on the same number of cameras and color channels. 
+
+Even though you can come up with many workarounds to use models with data of different input shapes, we find that keeping the number of cameras and color channels the same gives the best results. 
+
+The models currently in the repo include 6 cam RGB (AVG and MAX) and 6 cam MONO (AVG). 
+
+You'll want a 3 camera RGB or 3 camera MONO model trained on rat7m depending on whether your data is RGB or mono. 
+
+
+
+
+
+
+error:
+https://github.com/spoonsso/dannce/issues/50
+#### Could not load weights for finetune (likely because you are finetuning a previously finetuned network).###
+
+Can you try setting your config to use n_channels_out: 20. Keep new_n_channels_out: 14 (or 5).
+
+p.s. I would toggle augment_brightness and augment_continuous_rotation to False, unless you are willing to spend some time exploring the space of values for augment_brightness_val or augment_continuous_rotation. Recent experiments with the default augmentation values showed reduced performance when finetuning on mouse.
+
+The MAX weights in demo/markerless_mouse_1 folder are for 6 cameras, while you are using 5 cameras (you mentioned 5 video files)? You can use n_views parameter to duplicate one of your cameras (by setting n_views=6).
+
+
+
+
+
+
+what can we do: 
+using 5-pretrain mono network: 
+we use 5 cameras to record;
+
+n_views: 5
+
+small losss:
+net_type: MAX
+dannce_finetune_weights: 'F:\testdannce120\dannce\weight\max_5\'
+
+
+net_type: MAX
+dannce_finetune_weights: 'F:\testdannce120\dannce\weight\avg_5\'
+
+
+big loss:
+avg and pre-avg
+avg and pre-max
