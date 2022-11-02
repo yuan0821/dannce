@@ -11,6 +11,14 @@ python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU')
 
 
 conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+
+python
+import torch
+torch.cuda.is_available()
+
+
+
+
 Note: numpy change to 1.19.5???
 pip install -U setuptools
 pip install -e .
