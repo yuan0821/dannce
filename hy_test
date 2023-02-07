@@ -10,9 +10,23 @@ labelData{5,1}=labelData{1,1};
 params{5,1}=params{1,1}
 sync{5,1}=sync{1,1}
 
-
+## convert to capture format.
 python F:\dannce\dannce\utils\makeStructuredDataNoMocap.py F:\dannce\demo\mouse20230129\DANNCE\predict_results\save_data_MAX0.mat F:\dannce\Label3D\skeletons\rat16.mat F:\dannce\demo\mouse20230129\du_cam1_to_cam5_dannce.mat
 
+
+################################ check the predict result
+close all
+viewGui = View3D(params, videos, skeleton);
+
+% Load dannce predictions from a file. pts3d.pred is nFrames x 3 x nKeypoints 
+pts3d = load('F:\dannce\demo\mouse20230129\DANNCE\predict_results\save_data_MAX0.mat')
+viewGui.loadFrom3D(pts3d.pred) 
+
+% load COM result
+close all
+viewGui = View3D(params, videos, skeleton);
+pts3d = load('F:\dannce\demo\mouse20230129\DANNCE\predict_results\com3d_used.mat')
+viewGui.loadFrom3D(pts3d.com(framesToLabel,:))
 
 
 >>>>>>>>>>>>>>>>>>>>>>>dannce_mouse_config>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
