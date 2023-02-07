@@ -1,0 +1,54 @@
+dannce-train:
+-- weight file: MAX/AVG5
+-- n_view: 5
+-- start from MAX (loss much lower)
+-- duplicate camera 1  to camera 5 
+
+
+camnames{1,5}='Camera5';
+labelData{5,1}=labelData{1,1};
+params{5,1}=params{1,1}
+sync{5,1}=sync{1,1}
+
+
+python F:\dannce\dannce\utils\makeStructuredDataNoMocap.py F:\dannce\demo\mouse20230129\DANNCE\predict_results\save_data_MAX0.mat F:\dannce\Label3D\skeletons\rat16.mat F:\dannce\demo\mouse20230129\du_cam1_to_cam5_dannce.mat
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>dannce_mouse_config>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+io_config: 'io.yaml'
+# New number of network output channels.
+new_n_channels_out: 16
+# Degree of downsampling applied to image input. Default 1.
+downfac: 4
+# Video file extension
+extension: '.avi'
+
+# Batch size for training and prediction
+batch_size: 1
+n_views: 5
+mono: True
+# If true, intializes an "AVG" version of the network (i.e. final spatial expected value output layer). If false, "MAX" version
+# expval: False
+
+# DANNCE training option. Sets the number of epochs during training (default 1200)
+epochs: 3
+# either 'AVG' or 'MAX'
+net_type: MAX
+
+train_mode: finetune
+
+# How many samples from each animal do you want to (randomly) set aside for a validation metric?
+num_validation_per_exp: 0
+
+# Size of 3D volume (in mm) anchored on animal
+vol_size: 120
+
+# Number of voxels along each spatial dimension
+nvox: 64
+
+# max. number of batches to evaluate during prediction. set to 'max' to evaluate over all data/video frames
+max_num_samples: 100
+
+dannce_finetune_weights: 'F:\dannce\weight\MAX5\'
+predict_mode: 'torch'
