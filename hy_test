@@ -1,3 +1,7 @@
+Q1: Yes. com_finetune_weights should be the path to the folder containing the pretrained weights.
+
+Q2: demo/markerless_mouse_1/COM/weights/ contains the pretrained rat weights, which is a reasonable starting point for mice (and what we use a starting point for training our mouse COM net). However, if you want to try some mouse weights, you can use the weights from the mouse demo, demo/markerless_mouse_1/COM/train_results/.
+
 
 
 
