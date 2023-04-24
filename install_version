@@ -1,8 +1,10 @@
-conda create --name tfnew25 python=3.7
+conda create --name tfnew26 python=3.7
 
-conda activate tfnew25
+conda activate tfnew26
 conda install -c conda-forge cudatoolkit=11.3 cudnn=8.2 ffmpeg
-pip install tensorflow==2.5.0
+pip install tensorflow==2.6.0
+
+
 Note: Do not install TensorFlow with conda. It may not have the latest stable version. pip is recommended since TensorFlow is only officially released to PyPI.
 python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
 
@@ -12,9 +14,7 @@ python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU')
 
 conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.3 -c pytorch
 
-python
-import torch
-torch.cuda.is_available()
+python -c "import torch;print(torch.cuda.is_available())"
 
 
 
