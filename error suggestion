@@ -1,3 +1,16 @@
+
+1. in COM config, should not use mono; ValueError: Shapes (3, 3, 1, 32) and (32, 3, 3, 3) are incompatible.
+
+
+
+
+
+
+
+
+
+
+
 A general rule is that you want the model you're finetuning to have been trained on the same number of cameras and color channels. 
 
 Even though you can come up with many workarounds to use models with data of different input shapes, we find that keeping the number of cameras and color channels the same gives the best results. 
