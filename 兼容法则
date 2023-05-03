@@ -1,0 +1,28 @@
+TensorFlow、PyTorch、cuDNN和CUDA Toolkit以及GPU驱动程序之间的兼容性原则是版本匹配。这意味着您需要选择与您的CUDA和cuDNN版本兼容的TensorFlow和PyTorch版本，并安装与您的CUDA和cuDNN版本兼容的GPU驱动程序。
+
+例如，假设您的系统安装了CUDA 11.3和cuDNN 8.2.4，那么您需要选择与这些版本兼容的TensorFlow和PyTorch版本。
+在这种情况下，您可以选择TensorFlow 2.6.0或更高版本以支持CUDA 11.3，并选择PyTorch 1.9.0或更高版本以支持CUDA 11.3。
+
+此外，为了使这些软件能够使用GPU加速，您需要安装与您的CUDA和cuDNN版本兼容的GPU驱动程序，例如NVIDIA的官方GPU驱动程序。总之，为了确保这些软件能够互相兼容，您需要仔细查看它们的文档和要求，并选择与您的CUDA和cuDNN版本兼容的正确版本。
+
+CUDA 11.3与TensorFlow 2.5及以下版本不兼容。
+TensorFlow官方文档指出，TensorFlow 2.5仅支持CUDA 11.0、11.1和11.2版本，不支持CUDA 11.3版本。
+因此，如果您的系统安装了CUDA 11.3，建议升级到TensorFlow 2.6或更高版本以确保兼容性。请注意，在升级TensorFlow之前，还需要确保您的cuDNN和GPU驱动程序与所选TensorFlow版本兼容。
+
+
+
+
+tf-nightly和tf是TensorFlow的两个不同版本。tf是稳定版本，而tf-nightly是每日构建的版本，包含最新的功能和修复程序，但也可能包含未经测试的代码。因此，tf-nightly主要用于测试和尝试最新的TensorFlow功能，而tf则更适合生产环境中的应用程序。
+
+官方文档上建议使用 `pip` 而不是 `conda` 安装 TensorFlow 的原因有几个：
+
+1. TensorFlow 官方团队更推荐使用 `pip` 安装 TensorFlow，因为他们更熟悉 `pip` 的使用，更能够及时解决与 `pip` 相关的问题。
+
+2. TensorFlow 官方团队会在 `pip` 上发布最新的预编译二进制包，这些包经过了官方认证和测试，可以保证在不同的操作系统和硬件平台上都能够正常运行。
+
+3. 使用 `conda` 安装 TensorFlow 可能会导致依赖项冲突或版本不兼容的问题。因为 `conda` 会自动安装软件包的依赖项，而这些依赖项可能与 TensorFlow 的要求不兼容，从而导致无法正常安装或运行 TensorFlow。
+
+虽然官方文档建议使用 `pip` 安装 TensorFlow，但在 Anaconda 环境下使用 `conda` 安装 TensorFlow 也是可行的，并且可以避免一些依赖项冲突的问题。如果您选择使用 `conda` 安装 TensorFlow，请确保您已经熟悉了 `conda` 的使用方法，并且在安装之前仔细检查软件包的依赖项。
+
+https://blog.csdn.net/Williamcsj/article/details/123915652?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-123915652-blog-84782046.235^v32^pc_relevant_default_base3&spm=1001.2101.3001.4242.1&utm_relevant_index=3
+
