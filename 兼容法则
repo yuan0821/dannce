@@ -1,7 +1,47 @@
+ Each version of TensorFlow is compiled to use a specific version of the cuDNN and CUDA developer libraries.
+ https://www.tensorflow.org/install/pip#install_cuda_with_apt
+ 
+ 
+ 
+##########tf2.4
+TensorFlow 2.4 introduces a new way to check to confirm whether your GPUs are available:
+
+
+python -c "import tensorflow as tf; print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))"
+
+python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+
+
+
+
+
+
+
+
+
+
+
+##########
+No, CUDA 10.1 does not support SM_86 architecture. The SM_86 architecture was introduced with the NVIDIA Ampere GPU architecture, which is supported starting from CUDA 11.0.
+
+CUDA 10.1 supports the following NVIDIA GPU architectures:
+
+Tesla: SM_30, SM_35, SM_37, SM_50, SM_52, SM_53, SM_60, SM_61
+Quadro: SM_30, SM_35, SM_37, SM_50, SM_52, SM_53, SM_60, SM_61
+GeForce: SM_30, SM_35, SM_37, SM_50, SM_52, SM_53, SM_60, SM_61, SM_62, SM_70, SM_72
+If you need to use the SM_86 architecture, you will need to use a CUDA version that supports it, such as CUDA 11.0 or newer.
+#############
+
+
+
+
+
+
+
 TensorFlow、PyTorch、cuDNN和CUDA Toolkit以及GPU驱动程序之间的兼容性原则是版本匹配。这意味着您需要选择与您的CUDA和cuDNN版本兼容的TensorFlow和PyTorch版本，并安装与您的CUDA和cuDNN版本兼容的GPU驱动程序。
 
 例如，假设您的系统安装了CUDA 11.3和cuDNN 8.2.4，那么您需要选择与这些版本兼容的TensorFlow和PyTorch版本。
-在这种情况下，您可以选择TensorFlow 2.6.0或更高版本以支持CUDA 11.3，并选择PyTorch 1.9.0或更高版本以支持CUDA 11.3。
+ 在这种情况下，您可以选择TensorFlow 2.6.0或更高版本以支持CUDA 11.3，并选择PyTorch 1.9.0或更高版本以支持CUDA 11.3。
 
 此外，为了使这些软件能够使用GPU加速，您需要安装与您的CUDA和cuDNN版本兼容的GPU驱动程序，例如NVIDIA的官方GPU驱动程序。总之，为了确保这些软件能够互相兼容，您需要仔细查看它们的文档和要求，并选择与您的CUDA和cuDNN版本兼容的正确版本。
 
@@ -11,9 +51,11 @@ TensorFlow官方文档指出，TensorFlow 2.5仅支持CUDA 11.0、11.1和11.2版
 
 
 
-
+##############
 tf-nightly和tf是TensorFlow的两个不同版本。tf是稳定版本，而tf-nightly是每日构建的版本，包含最新的功能和修复程序，但也可能包含未经测试的代码。因此，tf-nightly主要用于测试和尝试最新的TensorFlow功能，而tf则更适合生产环境中的应用程序。
 
+
+#################
 官方文档上建议使用 `pip` 而不是 `conda` 安装 TensorFlow 的原因有几个：
 
 1. TensorFlow 官方团队更推荐使用 `pip` 安装 TensorFlow，因为他们更熟悉 `pip` 的使用，更能够及时解决与 `pip` 相关的问题。
